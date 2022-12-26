@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+</head>
+<body>
+    <from>
+        <input type="number" name="first" autofocus id="first" step="any"/>
+        <select id="ope">
+            <option value="+"> + </option>
+            <option value="-"> - </option>
+            <option value="*"> * </option>
+            <option value="/"> / </option>
+        </select>
+        <input type="number" name="second" id="second" step="any"/>
+        <br>
+        <button onclick="call()">calculator</button>
+        <input type="text" name="" id="res" readonly="" />
+    </from>
+</body>
+<script type="text/javascript">
+function call(){
+    var ope=document.getElementById("ope").value;
+    var opr1=document.getElementById("first").value;
+    var opr2=document.getElementById("second").value;
+    //alert(ope);
+    //alert(opr1);   
+    //alert(opr2);   
+    //console.log(opr1);
+    //console.log(opr2);
+    if (ope=="+"){
+        var res= parseInt(opr1)+parseInt(opr2);
+    }
+    if (ope=="-"){
+        var res= parseInt(opr1)-parseInt(opr2);
+    }
+    if (ope=="*"){
+        var res= parseInt(opr1)*parseInt(opr2);
+    }
+    if (ope=="/"){
+        var res= parseInt(opr1)/parseInt(opr2);
+    }
+    document.getElementById("res").value= res;
+}
+</script>
+</html>

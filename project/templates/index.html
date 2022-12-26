@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}}</title>
+</head> 
+<body>
+    <b>my name is asitpal </b>
+    {{roll}}
+    
+        {% for i in course %}
+        <div>{{ forloop.counter}}{{  i }}</div>
+        {% endfor%}
+    {%  if number|length >   0 %}
+        {% for x in number %}
+            {% if x > 20 %}
+                <div>{{ forloop.counter}}{{"  "}}{{  x }}</div>
+            {% endif%}
+            {% endfor%}
+    {% else %}
+        no data found
+        {% endif %}
+
+    <table border="1">
+
+        <tr>
+            <th>name</th>
+            <th>roll_no</th>
+        </tr>
+            {% for i in studentData %}
+        <tr>
+            <td>{{ i.name }}</td>
+            <td>{{ i.roll_no}}</td>
+        </tr>
+            {% endfor %}
+    </table>
+</body>
+</html>
+
