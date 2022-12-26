@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponse
 
 def homePage(request):
     data={
@@ -16,15 +16,19 @@ def homePage(request):
     # return HttpResponse("Hello, world. You're at the polls index.")
     return render(request,"index.html",data)
 
+    
 
+def index(request):
+    return render(request,"basic-table.html")
 
-
-def index(request):    
-      return HttpResponse("Hello, world. You're at the polls index.")
+    #   return HttpResponse("Hello, world. You're at the polls index.")
 
   
 def aboutUs(request):
-    return HttpResponse("asit pal")
+    print(request.POST)
+    return render(request,"forms/userDetails.html")
+
+    # return HttpResponse("asit pal")
 
 def create(request):
     return HttpResponse("welcome to india")
