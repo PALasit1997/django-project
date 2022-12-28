@@ -12,35 +12,35 @@
             {% csrf_token %}
             <div class="form-group">
               <label for="exampleInputName1">Name</label>
-              <input type="text" name="name" class="form-control" id="name" placeholder="Name">
+              <input type="text" name="name" value="{{data.name}}" class="form-control" id="name" placeholder="Name">
             </div>
             <div class="form-group">
               <label for="exampleInputEmail3">Email address</label>
-              <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+              <input type="email" name="email" value="{{data.email}}" class="form-control" id="email" placeholder="Email">
             </div>
             <div class="form-group">
               <label for="exampleInputPassword4">Password</label>
-              <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+              <input type="password" name="password" value="{{data.password}}" class="form-control" id="password" placeholder="Password">
             </div>
             <div class="form-group">
               <label for="exampleSelectGender">Gender</label>
-                <select class="form-control"  name="gender" id="gender">
+                <select class="form-control"  name="gender" value="{{data.gender}}" id="gender">
                   <option>Male</option>
                   <option>Female</option>
                 </select>
               </div>
             <div class="form-group">
               <label>File upload</label>
-              <input type="file" name="image" id="image" class="form-control">
+              <input type="file" name="image"  value="{{data.image}}" id="image" class="form-control">
               
             </div>
             <div class="form-group">
-              <label for="exampleInputCity1">City</label>
-              <input type="text" name="city" class="form-control" id="city" placeholder="Location">
+              <label for="exampleTextarea1">Address</label>
+              <textarea class="form-control" name="address" id="address" rows="4">{{data.addrss}}</textarea>
             </div>
             <div class="form-group">
-              <label for="exampleTextarea1">Address</label>
-              <textarea class="form-control" name="address" id="address" rows="4"></textarea>
+              <label for="exampleInputCity1">status</label>
+              <input type="text" name="status" value="{{data.status}}" class="form-control" id="status" placeholder="Location">
             </div>
             <button type="submit" class="btn btn-primary me-2">Submit</button>
             <button class="btn btn-light">Cancel</button>

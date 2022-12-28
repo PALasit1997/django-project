@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponse
-# from students.models import Students
+from students.models import Students
 # from.forms import user_form
 import math
 
@@ -66,6 +66,64 @@ def calculator(request):
     
     return render(request,"calculator.html",{"res":res})
 
+
+def student_Dtls(request):
+
+    students = Students.objects.all()
+    
+    return render(request,"studentDetails.html",{"students":students})
+
+
+def user_data(request):
+
+    students=Students.objects.all()
+
+    return render(request,"forms/basic-table.html",{"students":students})
+
+
+def aboutUs(request):
+    data=""
+    try:
+        if request.method=="POST":
+            
+            s1=str(request.POST.get("name"))
+            s2=str(request.POST.get("email"))
+            s3=str(request.POST.get("password"))
+            s4=(request.POST.get("gender"))
+            s5=(request.POST.get("image"))
+            s6=str(request.POST.get("address"))
+            s7=str(request.POST.get("status"))
+            data={
+                "name":s1,
+                "email":s2,
+                "password":s3,
+                "gender":s4,
+                "image":s5,
+                "address":s6,
+                "status":s7,
+            }
+            # print(data)
+        obj = Students(name=request.POST.get("name"),
+            email = request.POST.get("email"),             
+            password = request.POST.get("password"),
+            gender = request.POST.get("gender"), 
+            image = request.POST.get("image"),
+            status = request.POST.get("status"),
+            address = request.POST.get("address"),           
+            ).save()
+        print(obj)
+    except:
+        print("invalid opr......")
+    # print(request.POST)
+    return render(request,"forms/userDetails.html",{"data":data})
+
+def getStudent(request):
+    students = Students.objects.all()
+    data = {
+        'students': students
+    }
+    return render(request,'index.html')
+
 def homePage(request):
     data={
         "name" : "home Page 1  ",
@@ -89,11 +147,6 @@ def index(request):
     #   return HttpResponse("Hello, world. You're at the polls index.")
 
   
-def aboutUs(request):
-    print(request.POST)
-    return render(request,"forms/userDetails.html")
-
-    # return HttpResponse("asit pal")
 
 def create(request):
     return HttpResponse("welcome to india")
