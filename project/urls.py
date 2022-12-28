@@ -26,5 +26,7 @@ urlpatterns = [
     path('about/', views.aboutUs),
     path('create/', views.create),
     path('all-course/<str:courseId>', views.allcoures),
-    
+    path('calculator/', views.calculator),
+    path('even-odd/', views.evenOdd),
+    path('markshit/', views.markshit),
 ]

@@ -11,23 +11,14 @@
         {% csrf_token %}
         <label for="">first value</label>
         <input type="number" name="first" autofocus id="first" class="form-control" step="any"/>
-        <select name="opr">
-            <option value="+"> + </option>
-            <option value="-"> - </option>
-            <option value="*"> * </option>
-            <option value="/"> / </option>
-        </select>
-        <label for="">second value</label>
-        <input type="number" name="second" id="second"  class="form-control" step="any"/>
+        
         <br>
-        <button type="submit">calculate</button>
-    </form>
-    <div>
+        <button type="submit">even | odd</button>
         <br>
         <br>
         <label for="">output</label>
         <input type="text" name="ope" value="{{res}}"  readonly="" class="form-control"/>
-    </div>
+    </form>
 </body>
 
 </html>
