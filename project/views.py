@@ -70,7 +70,10 @@ def calculator(request):
 def student_Dtls(request):
 
     students = Students.objects.all()
-    
+    print(students)
+    for student in students:
+        print(student.name)
+
     return render(request,"studentDetails.html",{"students":students})
 
 
@@ -142,11 +145,11 @@ def homePage(request):
     
 
 def index(request):
-    return render(request,"basic-table.html")
+    return render(request,"")
 
     #   return HttpResponse("Hello, world. You're at the polls index.")
 
-  
+
 
 def create(request):
     return HttpResponse("welcome to india")

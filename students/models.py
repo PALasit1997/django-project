@@ -8,5 +8,5 @@ class Students(models.Model):
     gender = models.CharField(max_length=30)
     image = models.CharField(max_length=150)
     address = models.CharField(max_length=250)
-    phone_no=models.CharField(max_length=50)
+    phone_no = models.CharField(max_length=20)
     status = models.CharField(max_length=30)
