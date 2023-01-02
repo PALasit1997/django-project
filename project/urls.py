@@ -21,15 +21,15 @@ from project import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
-    path('get-student/', views.getStudent),
+    # path('get-student/', views.getStudent),
     path('create-user/', views.aboutUs),
     path('homepage/', views.homePage),
-    path('about/', views.aboutUs),
+    path('create-student/', views.aboutUs),
     path('create/', views.create),
     path('all-course/<str:courseId>', views.allcoures),
     path('calculator/', views.calculator),
     path('even-odd/', views.evenOdd),
     path('markshit/', views.markshit),
-    path('student-dtls/', views.student_Dtls),
+    path('get-student/', views.studentDetails),
     path('user-data/', views.user_data),
 ]

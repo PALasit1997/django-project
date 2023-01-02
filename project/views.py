@@ -67,7 +67,7 @@ def calculator(request):
     return render(request,"calculator.html",{"res":res})
 
 
-def student_Dtls(request):
+def studentDetails(request):
 
     students = Students.objects.all()
     print(students)
