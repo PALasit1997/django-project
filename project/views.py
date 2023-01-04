@@ -138,14 +138,14 @@ def homePage(request):
             {"name":"biswajit pal","roll_no":1}
         ]
     }
-    
     # return HttpResponse("Hello, world. You're at the polls index.")
-    return render(request,"index.html",data)
+    return render(request,"homepage.html",data)
 
     
 
-def index(request):
-    return render(request,"")
+def loginPage(request):
+   
+    return render(request,"login.html")
 
     #   return HttpResponse("Hello, world. You're at the polls index.")
 
