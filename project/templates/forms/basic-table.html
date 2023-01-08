@@ -45,7 +45,7 @@
                         
                           <tr class="table-info">
                             
-                            <td>{{students.name}} </td>
+                            <td>{{  forloop.counter  }} .&nbsp;  {{students.name}} </td>
                             <td>{{students.email}}</td>
                             <td>{{students.password}}</td>
                             <td>{{students.gender}}</td>
@@ -53,7 +53,7 @@
                             <td>{{students.address}}</td>
                             <td>{{students.status}}</td>
                             <td>
-                              <form action="create-student" id="student" method="get"><button type="submit" class="btn btn-primary btn-rounded btn-fw">Edit</button></form>
+                              <form action="create-student" id="id" method="get"><button type="submit" class="btn btn-primary btn-rounded btn-fw">Edit</button></form>
                               <button type="button" class="btn btn-danger btn-rounded btn-fw">Delete</button>
                             </td>
                           </tr> 
