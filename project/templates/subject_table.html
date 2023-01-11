@@ -14,28 +14,13 @@
                         <thead>
                           <tr>
                             <th>
-                              name
+                              Subject Name
                             </th>
                             <th>
-                              email
+                              Subject Code
                             </th>
                             <th>
-                              password
-                            </th>
-                            <th>
-                              gender
-                            </th>
-                            <th>
-                              image
-                            </th>
-                            <th>
-                              address
-                            </th>
-                            <th>
-                              phone_no
-                            </th>
-                            <th>
-                              status
+                              Status
                             </th>
                             <th>
                               action
@@ -43,19 +28,14 @@
                           </tr>
                         </thead>
 
-                        {%  for students in students  %}
+                        {%  for subjects in subject  %}
 
                         
                           <tr class="table-info">
                             
-                            <td>{{  forloop.counter  }} .&nbsp;  {{students.name | upper | safe}} </td>
-                            <td>{{students.email}}</td>
-                            <td>{{students.password}}</td>
-                            <td>{{students.gender}}</td>
-                            <td>{{students.image}}</td>
-                            <td>{{students.address}}</td>
-                            <td>{{students.phone_no}}</td>
-                            <td>{{students.status}}</td>
+                            <td>{{  forloop.counter  }} .&nbsp;  {{subjects.name | upper | safe}} </td>
+                            <td>{{subjects.code}}</td>
+                            <td>{{subjects.status}}</td>
                             <td>
                              <a href="/calculator"> <button type="submit" class="btn btn-primary btn-rounded btn-fw">Edit</button></a>
                               <button type="button" class="btn btn-danger btn-rounded btn-fw">Delete</button>
@@ -72,4 +52,4 @@
             </div>
           </div>
         </div>
-         {% include '../footer.html' %}
+       

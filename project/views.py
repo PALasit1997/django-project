@@ -116,7 +116,8 @@ def aboutUs(request):
             s4=(request.POST.get("gender"))
             s5=(request.POST.get("image"))
             s6=str(request.POST.get("address"))
-            s7=str(request.POST.get("status"))
+            s7=str(request.POST.get("phone_no"))
+            s8=str(request.POST.get("status"))
             data={
                 "name":s1,
                 "email":s2,
@@ -124,7 +125,8 @@ def aboutUs(request):
                 "gender":s4,
                 "image":s5,
                 "address":s6,
-                "status":s7,
+                "phone_no":s7,
+                "status":s8,
             }
             # print(data)
         obj = Students(name=request.POST.get("name"),
@@ -132,10 +134,11 @@ def aboutUs(request):
             password = request.POST.get("password"),
             gender = request.POST.get("gender"), 
             image = request.POST.get("image"),
+            address = request.POST.get("address"),
+            phone_no = request.POST.get("phone_no"),           
             status = request.POST.get("status"),
-            address = request.POST.get("address"),           
             ).save()
-        print(obj)
+        # print(obj)
     except:
         print("invalid opr......")
     # print(request.POST)
