@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from django.http import HttpResponse,HttpResponse
 from students.models import Students
 # from.forms import user_form
@@ -38,6 +38,21 @@ def markshit(request):
 def evenOdd(request):
     res=""
     if request.method=="POST":
+
+        res1=eval(request.POST.get("first"))
+        if res1%2==0:
+            res="even number"
+        else :
+            res="odd number"
+        print(res1)
+    return render(request,"evenOdd.html",{"res":res})
+
+def solvedevenOdd(request):
+    res=""
+    if request.method=="POST":
+        if request.POST.get("first")=="":
+            return render(request,"evenOdd.html",{"error":True})
+        
         res1=eval(request.POST.get("first"))
         if res1%2==0:
             res="even number"
@@ -47,7 +62,8 @@ def evenOdd(request):
     return render(request,"evenOdd.html",{"res":res})
 
 def calculator(request):
-    res=""
+    data={ }
+    # res=""
     try:
         if request.method=="POST":
             n1=eval(request.POST.get("first"))
@@ -61,10 +77,15 @@ def calculator(request):
                 res=n1*n2
             elif (opr=="/"):
                 res=n1/n2
+            data = {
+                "n1" : n1,
+                "n2" : n2,
+                "res": res
+            }
     except :
         res="invalid opreator"
-    
-    return render(request,"calculator.html",{"res":res})
+    print(data)
+    return render(request,"calculator.html",data)
 
 
 def studentDetails(request):
@@ -120,6 +141,13 @@ def aboutUs(request):
     # print(request.POST)
     return render(request,"forms/userDetails.html",{"data":data})
 
+def student_edit(request,student):
+    students = student.objects.all()
+    print("hello world")
+    print(student)
+    # return students
+    return render(request,'index.html')
+
 def getStudent(request):
     students = Students.objects.all()
     data = {
@@ -156,3 +184,5 @@ def create(request):
 
 def allcoures(request,courseId):
     return HttpResponse(courseId)
+
+    

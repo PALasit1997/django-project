@@ -21,18 +21,21 @@ from project import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("cources.urls")),
+    path('', include("subjects.urls")),
 
 
     path('', views.loginPage),
     path('create-user/', views.aboutUs),
     path('get-student/', views.studentDetails),
     path('user-data/', views.user_data),
-    path('homepage/', views.homePage),
     path('create-student/', views.aboutUs),
-    path('create/', views.create),
-    path('all-course/<str:courseId>', views.allcoures),
     path('calculator/', views.calculator),
     path('even-odd/', views.evenOdd),
+    path('solvedevenOdd/', views.solvedevenOdd),
     path('markshit/', views.markshit),
+    path('homepage/', views.homePage),
+    # path('student-edit/<student>', views.student_edit),
     # path('get-student/', views.getStudent),
+    path('create/', views.create),
+    path('all-course/<str:courseId>', views.allcoures),
 ]

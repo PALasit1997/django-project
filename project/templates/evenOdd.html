@@ -8,9 +8,14 @@
 </head>
 <body>
     <form method="POST">
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            
+        </div>
+        {% endif %}
         {% csrf_token %}
         <label for="">first value</label>
-        <input type="number" name="first" autofocus id="first" class="form-control" step="any"/>
+        <input type="number" name="first" autofocus id="first" class="form-control" placeholder="please enter the value" step="any"/>
         
         <br>
         <button type="submit">even | odd</button>

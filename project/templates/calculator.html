@@ -10,7 +10,7 @@
     <form method="POST">
         {% csrf_token %}
         <label for="">first value</label>
-        <input type="number" name="first" autofocus id="first" class="form-control" step="any"/>
+        <input type="number" name="first" value="{{n1}}" autofocus id="first" class="form-control" step="any"/>
         <select name="opr">
             <option value="+"> + </option>
             <option value="-"> - </option>
@@ -18,7 +18,7 @@
             <option value="/"> / </option>
         </select>
         <label for="">second value</label>
-        <input type="number" name="second" id="second"  class="form-control" step="any"/>
+        <input type="number" name="second" value="{{n2}}" id="second"  class="form-control" step="any"/>
         <br>
         <button type="submit">calculate</button>
     </form>
