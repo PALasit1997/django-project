@@ -129,14 +129,16 @@ def aboutUs(request):
                 "status":s8,
             }
             # print(data)
-        obj = Students(name=request.POST.get("name"),
-            email = request.POST.get("email"),             
-            password = request.POST.get("password"),
-            gender = request.POST.get("gender"), 
-            image = request.POST.get("image"),
-            address = request.POST.get("address"),
-            phone_no = request.POST.get("phone_no"),           
-            status = request.POST.get("status"),
+        obj = Students(
+                        # id=16,
+                        name=s1,
+                        email = s2,             
+                        password = s3,
+                        gender = s4, 
+                        image = s5,
+                        address = s6,
+                        phone_no = s7,           
+                        status = s8,
             ).save()
         # print(obj)
     except:
@@ -144,12 +146,12 @@ def aboutUs(request):
     # print(request.POST)
     return render(request,"forms/userDetails.html",{"data":data})
 
-def student_edit(request,student):
-    students = student.objects.all()
-    print("hello world")
-    print(student)
+def edit_student(request,student):
+    students = student.objects(id=student)
+    # print("hello world")
+    print(students)
     # return students
-    return render(request,'index.html')
+    return render(request,'index.html',{"student":students})
 
 def getStudent(request):
     students = Students.objects.all()

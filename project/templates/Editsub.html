@@ -7,7 +7,7 @@
     <div class="col-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Basic form elements</h4>
+          <h4 class="card-title">Edit subject</h4>
           <p class="card-description">
            form elements
           </p>
@@ -16,17 +16,17 @@
         
             <div class="form-group">
                 <label for="exampleInputCode">Subject name</label>
-                <input type="text" name="subject" value="{{data.subject}}" class="form-control" id="subject" required autofocus placeholder="Subject_code"/>
+                <input type="text" name="subject" value="{{subject.subject}}" class="form-control" id="subject" placeholder="Subject_name"/>
             </div>
             <div class="form-group">
                 <label for="exampleInputCode">Subject code</label>
-                <input type="number" name="code" value="{{data.code}}" class="form-control" id="code" placeholder="Subject_code">
+                <input type="text" name="code" value="{{subject.code}}" class="form-control" id="code" placeholder="Subject_code">
             </div>
         
             <div class="form-group">
                 <label for="exampleSelectGender">Status</label>
                 <select class="form-control"  name="status" value="" id="status">
-                    <option>{{data.status}}</option>    
+                    <option>{{subject.status}}</option>    
                     <option>Active</option>
                     <option>Deactive</option>
                 </select>
