@@ -1,0 +1,28 @@
+
+<!-- {{ question.id }}
+
+<h1>{{ question.question_text }}</h1>
+<h1>{{ question.id }}</h1>
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }}</li>
+{% endfor %}
+</ul> -->
+        <!-- this page is call in html -->
+<!-- <li><a href="/product/{{ question.id }}/">{{ question.question_text }}</a>check text</li>
+<li><a href="{% url 'product:detail' question.id %}">{{ question.question_text }}</a><br> check url in details <br></li> -->
+
+    <!--wright a minimal from-->
+        <!--urls add name product-->
+    <form action="{% url 'product:vote' question.id %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend><h1>{{ question.question_text }}</h1></legend>
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+            {% for choice in question.choice_set.all %}
+                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+            {% endfor %}
+        </fieldset>
+        <input type="submit" value="Vote">
+        </form>

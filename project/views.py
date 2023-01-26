@@ -1,9 +1,51 @@
 from django.shortcuts import render , redirect
 from django.http import HttpResponse,HttpResponse
 from students.models import Students
+# from django.contrib.auth.models import Students
 # from.forms import user_form
 import math
 
+
+def home(request):
+    return render(request,"index.html")
+    # return HttpResponse("test home page")
+
+def singup(request):
+    data=""
+
+    if request.method=="POST":
+        username = request.POST.get("username")
+        s1=request.POST.get("name")
+        s2=request.POST.get("email")
+        s3=request.POST.get("password")
+        # print(username,s1,s2,s3)
+        my_user=Students.objects.create_user(username,s1,s2,s3)
+        my_user.save()
+        return HttpResponse("this page is sucessfully passed")
+    return render(request,"signup.html",{"data":data})
+
+
+def singin(request):
+    if request.method=="POST":
+
+        x=request.POST.get("username")
+        y=request.POST.get("password")
+        # print(x)
+        stu=Students.objects.filter(email=x,password=y).first()
+        # if stu.email== x:
+        # if  x in stu:
+        # if x in stu:
+        for x in stu:
+            return render(request,"signup.html")
+        # for student in stu:
+        print(x.name)
+        # print(stu.email)
+    #   print("welcome to india")
+    return render(request,"signin.html")
+
+
+# def singout(request):
+#     return render(request,signout.html)
 
 def markshit(request):
     data=""
@@ -177,6 +219,7 @@ def homePage(request):
     
 
 def loginPage(request):
+    print("asit")
    
     return render(request,"login.html")
 

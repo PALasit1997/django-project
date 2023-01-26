@@ -22,6 +22,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("cources.urls")),
     path('', include("subjects.urls")),
+    path('', include('product.urls')),
+
+
+    # path('', views.home),
+    path('signup/', views.singup),
+    path('signin/', views.singin),
+    # path('signout/', views.singout,name=singout),
+
 
 
     path('', views.loginPage),
