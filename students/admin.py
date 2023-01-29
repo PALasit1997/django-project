@@ -4,11 +4,13 @@ from django.contrib import admin
 from .models import Students
 
 
+@admin.register(Students)
 class StudentsAdmin(admin.ModelAdmin):
-    list_Display = ('name','address','gender','email','password','image','status')
-
-    @admin.display(empty_value='name')
-    def name(self, obj):
-        return obj.name
-admin.site.register(Students)
+    list_display =Students.DisplayFields
+    search_fields = Students.SearchableFields
+    list_filter = Students.FilterFields
+    # @admin.display(empty_value='name')
+    # def name(self, obj):
+    #     return obj.name
+# admin.site.register(Students)
 # Register your models here.

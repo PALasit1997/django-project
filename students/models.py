@@ -10,3 +10,6 @@ class Students(models.Model):
     address = models.CharField(max_length=250)
     phone_no = models.CharField(max_length=10)
     status = models.CharField(max_length=30)
+    DisplayFields = ['id','name','email','password','gender','image','address','phone_no','status']
+    SearchableFields = ['id','name','phone_no']
+    FilterFields = ['name']
