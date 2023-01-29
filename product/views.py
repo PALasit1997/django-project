@@ -76,7 +76,7 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
 
     model = Question
-    template_name = 'product/details .html'
+    template_name = 'product/details.html'
 
     def get_queryset(self):
         """
