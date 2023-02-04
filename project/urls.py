@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from project import views
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,19 +27,19 @@ urlpatterns = [
 
 
     # path('', views.home),
-    path('signup/', views.singup),
-    path('signin/', views.singin),
-    # path('signout/', views.singout,name=singout),
+    path('signup/', views.singup,name='signup'),
+    path('login/', views.login,name='login'),
+    path('logout/', views.log_out,name="logout"),
 
 
 
-    path('', views.loginPage),
-    path('create-user/', views.aboutUs),
+    path('', views.loginPage,name='home'),
+    path('create-user/', views.aboutUs,name="create_user"),
     path('get-student/', views.studentDetails),
-    path('user-data/', views.user_data),
+    path('user-data/', views.user_data,name="user_data"),
     path('edit-student/<student>',views.edit_student,name="edit-student"),
     path('create-student/', views.aboutUs),
-    path('calculator/', views.calculator),
+    path('calculator/', views.calculator,name="calculator"),
     path('even-odd/', views.evenOdd),
     path('solvedevenOdd/', views.solvedevenOdd),
     path('markshit/', views.markshit),

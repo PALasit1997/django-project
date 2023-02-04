@@ -1,8 +1,11 @@
 from django.shortcuts import render , redirect
 from django.http import HttpResponse,HttpResponse
 from students.models import Students
-# from django.contrib.auth.models import Students
-# from.forms import user_form
+from .forms import signup,login_form
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
+# from django.contrib.auth.forms import UserCreationForm
+# from .forms import user_form
 import math
 
 
@@ -11,41 +14,84 @@ def home(request):
     # return HttpResponse("test home page")
 
 def singup(request):
-    data=""
-
+    # data=""
+    # fn=user_form()
     if request.method=="POST":
-        username = request.POST.get("username")
-        s1=request.POST.get("name")
-        s2=request.POST.get("email")
-        s3=request.POST.get("password")
-        # print(username,s1,s2,s3)
-        my_user=Students.objects.create_user(username,s1,s2,s3)
-        my_user.save()
-        return HttpResponse("this page is sucessfully passed")
-    return render(request,"signup.html",{"data":data})
+        form = signup(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(login)
+            # return HttpResponse("<h1>signup page successfully</h1>")
+    else:
+        form = signup()
+    data = {
+        # "froms":fn,
+            "form":form
+    }
+
+        # username = request.POST.get("username")
+        # s1=request.POST.get("name")
+        # s2=request.POST.get("email")
+        # s3=request.POST.get("password")
+        # # print(username,s1,s2,s3)
+        # my_user=Students.objects.create_user(username,s1,s2,s3)
+        # my_user.save()
+        # return HttpResponse("this page is sucessfully passed")
+    return render(request,"signup.html",data)
 
 
-def singin(request):
+def login(request):
     if request.method=="POST":
+        form = login_form(request.POST)
+        if form.is_valid():
+            cd=form.cleaned_data
+            user = authenticate(request,username=cd["username"],password=cd["password"])
+            if user is not None:
+                if user.is_active:
+                    login_form(request,user)
+                    # return HttpResponse("login successfully")
+                    return redirect(home)
+                        #--: which call redirect page in (url / function name / name?) ?
+                else:
+                    return HttpResponse("disable account")
 
-        x=request.POST.get("username")
-        y=request.POST.get("password")
-        # print(x)
-        stu=Students.objects.filter(email=x,password=y).first()
+            else:
+                return HttpResponse("invalid login")
+    else:
+        form=login_form()
+
+    #     x = request.POST['username']
+    #     y = request.POST['password']
+    #     print("asit pal is a good boy")
+    #     # print(username1)
+    #     # print(password)
+    # data={
+    #     "username":x,
+    #     "password":y,
+    # }
+
+        # x=request.POST.get("username")
+        # y=request.POST.get("password")
+        # # print(x)
+        # stu=Students.objects.filter(email=x,password=y).first()
         # if stu.email== x:
-        # if  x in stu:
-        # if x in stu:
-        for x in stu:
-            return render(request,"signup.html")
-        # for student in stu:
-        print(x.name)
-        # print(stu.email)
-    #   print("welcome to india")
-    return render(request,"signin.html")
+    #     # if  x in stu:
+    #     # if x in stu:
+    #     for x in stu:
+            # return render(request,"signup.html")
+            # return redirect(create_user)
+    #     # for student in stu:
+    #     print(x.name)
+    #     # print(stu.email)
+    # #   print("welcome to india")
+    return render(request,"login.html",{"form":form})
 
+@login_required
+def log_out(request):
+    logout(request)
+    # return render(request,signout.html)
+    return HttpResponse("logout page is successfully")
 
-# def singout(request):
-#     return render(request,signout.html)
 
 def markshit(request):
     data=""
@@ -221,7 +267,7 @@ def homePage(request):
 def loginPage(request):
     print("asit")
    
-    return render(request,"login.html")
+    return render(request,"loginpage.html")
 
     #   return HttpResponse("Hello, world. You're at the polls index.")
 
