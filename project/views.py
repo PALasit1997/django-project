@@ -1,9 +1,10 @@
 from django.shortcuts import render , redirect
-from django.http import HttpResponse,HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from students.models import Students
 from .forms import signup,login_form
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
 # from django.contrib.auth.forms import UserCreationForm
 # from .forms import user_form
 import math
@@ -43,14 +44,18 @@ def singup(request):
 def login(request):
     if request.method=="POST":
         form = login_form(request.POST)
+        # print(form)
+
         if form.is_valid():
             cd=form.cleaned_data
             user = authenticate(request,username=cd["username"],password=cd["password"])
             if user is not None:
                 if user.is_active:
                     login_form(request,user)
+                    # if request.GET.get('Next'):
+                    #     return HttpResponseRedirect(request.GET['next'])
                     # return HttpResponse("login successfully")
-                    return redirect(home)
+                    return redirect("home")
                         #--: which call redirect page in (url / function name / name?) ?
                 else:
                     return HttpResponse("disable account")
@@ -89,10 +94,11 @@ def login(request):
 @login_required
 def log_out(request):
     logout(request)
-    # return render(request,signout.html)
-    return HttpResponse("logout page is successfully")
+    return render(request,"loginpage.html")
+    # return HttpResponse("logout page is successfully")
+    # return render(request,"calculator.html")
 
-
+@login_required(login_url="/login/")
 def markshit(request):
     data=""
     if request.method=="POST":
@@ -263,7 +269,7 @@ def homePage(request):
     return render(request,"homepage.html",data)
 
     
-
+# @login_required
 def loginPage(request):
     print("asit")
    

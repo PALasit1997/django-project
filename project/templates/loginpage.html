@@ -23,11 +23,12 @@
 </head>
 
 <body>
-  <br><br>
+  <br>
 
   <marquee behavior="" direction="" onmouseover="stop()" onmouseout="start()">
     welcome to india   i am asit pal
   </marquee>
+  <br>
       
   <div class="container-scroller">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
@@ -65,17 +66,26 @@
                     <i class="ti-facebook me-2"></i>Connect using facebook
                   </button>
                 </div> -->
+                <h4>this is about page</h4>
                 <div class="container">
                   {% if request.user.is_authenticated %}
-                  <h3>welcome {{request.user.username}}</h3>
-                  <a class="btn btn-block btn-primary " href="{% url 'logout' %}">Logout</a>
+                    <h3>welcome {{request.user.username}}</h3>
+                    <!-- <h3> Welcome,{{request.user.first_name}}</h3> -->
+                    <a class="btn btn-block btn-primary text_right" href="{% url 'logout' %}">Logout</a>
                   {% else %}
-                  <a class="btn btn-block btn-primary " href="{% url 'login' %}">Login</a>
-                  <br>
-                  Don't have an account?
-                  <a class="btn btn-block btn-primary " href="{% url 'signup' %}">Registration</a>
+                    <a class="btn btn-block btn-primary text_right " href="{% url 'login' %}">Login</a>
+                    <br>
+                    Don't have an account?
+                    <a class="btn btn-block btn-primary " href="{% url 'signup' %}">Registration</a>
                   {% endif %}
                 </div>
+                <!-- <div class="container">
+                  {% if request.user.is_authenticated %}
+                  <pre>USER IS AUTHENTICATED</pre>
+                  {% else %}
+                  <pre>user is not authenticated</pre>
+                  {% endif%}
+                </div> -->
               </form>
             </div>
           </div>

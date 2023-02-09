@@ -25,8 +25,11 @@ SECRET_KEY = 'django-insecure-$68h++#2f0zzk!66v$9f_y)u95559sj7pv9ki1vjuwe3pu1h1x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','localhost']
 
+# AUTH_USER_MODEL = "authentication.User"
+
+# LOGIN_URL = 'login'
 
 # Application definition
 
@@ -122,6 +125,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+LOGIN_REDIRECT_URL='/signup'
+LOGOUT_REDIRECT_URL='/login'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
