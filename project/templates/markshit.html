@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>markshit</title>
+</head>
+<body>
+    <fieldset>
+        <form action="" method="post" >
+            {% csrf_token %}
+            <div>
+                <label >Ben</label>
+                <input type="text" name="Ben" required autofocus >
+                <br>
+                <br><br>
+
+                <label >Eng</label>
+                <input type="text" name="Eng" required >
+                <br><br><br>
+
+                <label >Math</label>
+                <input type="text" name="Math" >
+                <br><br><br>
+
+                <label >Hist</label>
+                <input type="text" name="Hist" >
+                <br><br><br>
+
+                
+                <label >Geo</label>
+                <input type="text" name="Geo" >
+                <br><br>
+                <button type="submit">submit</button>
+
+                <br><br>
+                <label >Total</label>
+                <input type="text" name="Total" value="{{total}}" readonly>
+
+                <br><br>
+                <label >persentage</label>
+                <input type="text" name="per" value="{{persentagae}}" readonly>
+
+                <br><br>
+                <label >Divitioin</label>
+                <input type="text" name="div" value="{{Divition}}" readonly>
+            </div>
+        </form>
+    </fieldset>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{% include "header.html" %}
+
+
+<h1>win india</h1>
+<h1>my villlage name is belgoria</h1>
+
+    <from method="post" action="">  
+        <div class="container">
+            {% if request.user.is_authenticated %}
+                {{ request.user.username }}
+                <a href="{% url 'logout' %}">logout</a>
+            {%else%}
+                <a href="{% url 'login' %}">login</a>
+                <br><br><a href="{% url 'signup' %}">Registration</a>
+            {% endif%}
+        </div>
+        
+        <!-- <div class="container">
+            {% if request.user.is_authenticated %}
+              <h3>welcome {{request.user.username}}</h3>
+              <!-- <h3> Welcome,{{request.user.first_name}}</h3> -->
+              <!-- <a class="btn btn-block btn-primary text_right" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+              <a class="btn btn-block btn-primary text_right " href="{% url 'login' %}">Login</a>
+              <br>
+              Don't have an account?
+              <a class="btn btn-block btn-primary " href="{% url 'signup' %}">Registration</a>
+            {% endif %}
+          </div> --> -->
+    </from>
+
+
+
+{% include "footer.html" %}

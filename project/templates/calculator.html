@@ -7,43 +7,27 @@
     <title>calculator</title>
 </head>
 <body>
-    <from>
-        <input type="number" name="first" autofocus id="first" step="any"/>
-        <select id="ope">
+    <form method="POST">
+        {% csrf_token %}
+        <label for="">first value</label>
+        <input type="number" name="first" value="{{n1}}" autofocus id="first" class="form-control" step="any"/>
+        <select name="opr">
             <option value="+"> + </option>
             <option value="-"> - </option>
             <option value="*"> * </option>
             <option value="/"> / </option>
         </select>
-        <input type="number" name="second" id="second" step="any"/>
+        <label for="">second value</label>
+        <input type="number" name="second" value="{{n2}}" id="second"  class="form-control" step="any"/>
         <br>
-        <button onclick="call()">calculator</button>
-        <input type="text" name="" id="res" readonly="" />
-    </from>
+        <button type="submit">calculate</button>
+    </form>
+    <div>
+        <br>
+        <br>
+        <label for="">output</label>
+        <input type="text" name="ope" value="{{res}}"  readonly="" class="form-control"/>
+    </div>
 </body>
-<script type="text/javascript">
-function call(){
-    var ope=document.getElementById("ope").value;
-    var opr1=document.getElementById("first").value;
-    var opr2=document.getElementById("second").value;
-    //alert(ope);
-    //alert(opr1);   
-    //alert(opr2);   
-    //console.log(opr1);
-    //console.log(opr2);
-    if (ope=="+"){
-        var res= parseInt(opr1)+parseInt(opr2);
-    }
-    if (ope=="-"){
-        var res= parseInt(opr1)-parseInt(opr2);
-    }
-    if (ope=="*"){
-        var res= parseInt(opr1)*parseInt(opr2);
-    }
-    if (ope=="/"){
-        var res= parseInt(opr1)/parseInt(opr2);
-    }
-    document.getElementById("res").value= res;
-}
-</script>
+
 </html>

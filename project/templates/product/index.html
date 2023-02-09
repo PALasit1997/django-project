@@ -1,0 +1,17 @@
+{% load static %}   
+<link rel="stylesheet" href="{% static 'product/style.css' %}">
+   
+   <!--how to for loop use in html page -->
+{% if latest_question_list %}
+    <ol>
+    {% for question in latest_question_list %}
+    <li><a href="{% url 'product:detail' question.id %}">{{ question.question_text }}</a><br> check url in details <br></li>
+    {% endfor %}
+    </ol>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+
+    <!-- this page is call in html -->
+

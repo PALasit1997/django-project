@@ -15,15 +15,37 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from project import views
+from . import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index', views.index),
+    path('', include("cources.urls")),
+    path('', include("subjects.urls")),
+    path('', include('product.urls')),
+
+
+    # path('', views.home),
+    path('', views.loginPage,name='home'),
+    path('signup/', views.singup,name='signup'),
+    path('login/', views.login,name='login'),
+    path('logout/', views.log_out,name="logout"),
+
+
+
+    path('create-user/', views.aboutUs,name="create_user"),
+    path('get-student/', views.studentDetails),
+    path('user-data/', views.user_data,name="user_data"),
+    path('edit-student/<student>',views.edit_student,name="edit-student"),
+    path('create-student/', views.aboutUs),
+    path('calculator/', views.calculator,name="calculator"),
+    path('even-odd/', views.evenOdd),
+    path('solvedevenOdd/', views.solvedevenOdd),
+    path('markshit/', views.markshit),
     path('homepage/', views.homePage),
-    path('about/', views.aboutUs),
+    # path('get-student/', views.getStudent),
     path('create/', views.create),
     path('all-course/<str:courseId>', views.allcoures),
-    
 ]

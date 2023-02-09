@@ -25,8 +25,11 @@ SECRET_KEY = 'django-insecure-$68h++#2f0zzk!66v$9f_y)u95559sj7pv9ki1vjuwe3pu1h1x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','localhost']
 
+# AUTH_USER_MODEL = "authentication.User"
+
+# LOGIN_URL = 'login'
 
 # Application definition
 
@@ -38,6 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'project',
+    'students',
+    'cources',
+    'subjects',
+    'product',
 ]
 
 MIDDLEWARE = [
@@ -56,6 +63,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [BASE_DIR, "templates"],
+        #     or    "DIRS": [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -117,10 +125,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+LOGIN_REDIRECT_URL='/signup'
+LOGOUT_REDIRECT_URL='/login'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_DIRS=[BASE_DIR, "static"],
+STATICFILES_DIRS = [
+    BASE_DIR / "project/static"
+]
