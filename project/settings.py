@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ['127.0.0.1','localhost']
 
 # AUTH_USER_MODEL = "authentication.User"
 
-# LOGIN_URL = 'login'
+LOGIN_URL = 'project/login'
 
 # Application definition
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    #'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'project',
@@ -114,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -125,8 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-LOGIN_REDIRECT_URL='/signup'
-LOGOUT_REDIRECT_URL='/login'
+
 
 
 # Default primary key field type
@@ -135,5 +135,11 @@ LOGOUT_REDIRECT_URL='/login'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "project/static"
+    (BASE_DIR / "project/static")
 ]
+
+LOGIN_REDIRECT_URL='project/home'
+LOGOUT_REDIRECT_URL='project/login'
+SESSION_COOKIE_AGE = 400
+# SESSION_COOKIE_NAME = "sessionname"    # change cookie name 
+SESSION_COOKIE_PATH = "/home"

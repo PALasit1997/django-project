@@ -27,12 +27,19 @@ urlpatterns = [
     path('', include('product.urls')),
 
 
+    path('set-sessions/',views.set_sessions),
+    path('get-sessions/',views.get_sessions),
+    path('del-sessions/',views.del_sessions),
+    path('set-test-sessions/',views.set_test_cookie),
+    path('get-test-sessions/',views.get_test_cookie),
+
+
     # path('', views.home),
     path('', views.loginPage,name='home'),
     path('signup/', views.singup,name='signup'),
     path('login/', views.login,name='login'),
     path('logout/', views.log_out,name="logout"),
-
+    path('profile/', views.profile_page,name='profile'),
 
 
     path('create-user/', views.aboutUs,name="create_user"),

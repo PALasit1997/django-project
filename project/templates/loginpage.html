@@ -70,6 +70,7 @@
                 <div class="container">
                   {% if request.user.is_authenticated %}
                     <h3>welcome {{request.user.username}}</h3>
+
                     <!-- <h3> Welcome,{{request.user.first_name}}</h3> -->
                     <a class="btn btn-block btn-primary text_right" href="{% url 'logout' %}">Logout</a>
                   {% else %}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getSessions</title>
+</head>
+<body>
+    <h3>get_sessions</h3>
+    {{name}}
+    {{lname}}
+    {{age}}
+    <hr>
+    {%  for key in keys %}
+        {{key}} <br>
+    {% endfor %} <hr>
+    <!-- or -->
+    <!-- {% for key in request.session.keys %}
+    {{key}}
+    {% endfor %} -->
+
+    {%  for key , value in items %}
+        {{key}} {{value}}<br>
+    {% endfor %} <hr>
+
+    {{request.session.get_session_cookie_age}} <br>
+    {{request.session.get_expiry_age}} <br>
+    {{request.session.get_expiry_date}} <br>
+    {{request.session.get_expire_at_browser_close}}
+</body>
+</html>

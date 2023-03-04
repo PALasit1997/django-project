@@ -10,6 +10,48 @@ from django.conf import settings
 import math
 
 
+def set_sessions(request):
+    request.session["name"] = "RAM"
+    request.session["lname"] = "PAL"
+            # session set expiry time
+    request.session.set_expiry(30)            # session expiry is 30 sec
+    # request.session.set_expiry(0)            # session expiry is 0 sec or tab close is browser closed
+    return render(request,"set_sessions.html")
+
+def get_sessions(request):
+    # name=request.session["name"]
+    name = request.session.get("name")
+    lname = request.session.get("lname")
+    keys = request.session.keys()
+    items = request.session.items()
+    age = request.session.setdefault("age","25")    
+    # print(keys)
+
+                # check session cookie_age ,expairy_age,expairy_date
+    print(request.session.get_session_cookie_age())    # this is termenal print
+    print(request.session.get_expiry_age())
+    print(request.session.get_expiry_date())
+    print(request.session.get_expire_at_browser_close())
+    return render(request,"get_session.html",{"name":name,"lname":lname,"keys":keys ,"items":items,"age":age})
+
+def del_sessions(request):
+    # request.session.flush()           # flush used for all session is clear
+    request.session.clear_expired()     # data base storage is cleared 
+    # if "name" in request.session:      # chouse element deletion
+    #     del request.session["name"]
+    return render(request,"del_sessions.html")
+
+def set_test_cookie(request):
+    print(request.session.set_test_cookie())
+    # print('check cookie')
+    return render(request,"set_sessions.html")
+
+def get_test_cookie(request):
+    print(request.session.test_cookie_worked())
+    # print('check cookie')
+    return render(request,"get_test_session.html")
+
+
 def home(request):
     return render(request,"index.html")
     # return HttpResponse("test home page")
@@ -55,7 +97,7 @@ def login(request):
                     # if request.GET.get('Next'):
                     #     return HttpResponseRedirect(request.GET['next'])
                     # return HttpResponse("login successfully")
-                    return redirect("home")
+                    return redirect("/profile/")
                         #--: which call redirect page in (url / function name / name?) ?
                 else:
                     return HttpResponse("disable account")
@@ -91,14 +133,18 @@ def login(request):
     # #   print("welcome to india")
     return render(request,"login.html",{"form":form})
 
-@login_required
+# @login_required
 def log_out(request):
     logout(request)
+    print(logout(request))
     return render(request,"loginpage.html")
     # return HttpResponse("logout page is successfully")
     # return render(request,"calculator.html")
 
-@login_required(login_url="/login/")
+def profile_page(request):
+    return render(request,"profile.html")
+
+@login_required
 def markshit(request):
     data=""
     if request.method=="POST":
@@ -271,7 +317,7 @@ def homePage(request):
     
 # @login_required
 def loginPage(request):
-    print("asit")
+    # print("asit")
    
     return render(request,"loginpage.html")
 
