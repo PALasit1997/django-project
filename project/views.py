@@ -81,7 +81,6 @@ def login(request):
         # stu=Students.objects.filter(email=x,password=y).first()
         # if stu.email== x:
     #     # if  x in stu:
-    #     # if x in stu:
     #     for x in stu:
             # return render(request,"signup.html")
             # return redirect(create_user)
@@ -91,7 +90,7 @@ def login(request):
     # #   print("welcome to india")
     return render(request,"login.html",{"form":form})
 
-@login_required
+# @login_required
 def log_out(request):
     logout(request)
     return render(request,"loginpage.html")
@@ -182,14 +181,29 @@ def calculator(request):
     return render(request,"calculator.html",data)
 
 
-def studentDetails(request):
+def studentDetails(request,id):
+    # if request.method=="POST":
+    #     x=request.POST.get("username")
+    #     y=request.POST.get("password")
+    #     print(x)
+    #     print(y)
+    #     stu=Students.objects.filter(email=x,password=y).first()
+    #     print(stu)
 
-    students = Students.objects.all()
+
+    students = Students.objects.get(id=id)
+    # students = Students.objects.all().values('name')
+    # students = Students.objects.filter(name='gmail').values()
     print(students)
-    for student in students:
-        print(student.name)
+    students.show()
+    # print(students.name)
+    # for student in students:
+    #     student.save()
+    #     print(student.name)
+        # pass
 
     return render(request,"studentDetails.html",{"students":students})
+
 
 
 def user_data(request):
@@ -210,8 +224,8 @@ def aboutUs(request):
             s4=(request.POST.get("gender"))
             s5=(request.POST.get("image"))
             s6=str(request.POST.get("address"))
-            s7=str(request.POST.get("phone_no"))
-            s8=str(request.POST.get("status"))
+            s7=int(request.POST.get("phone_no"))
+            s8=str(request.POST.get("status"))              
             data={
                 "name":s1,
                 "email":s2,
@@ -246,6 +260,47 @@ def edit_student(request,student):
     print(students)
     # return students
     return render(request,'index.html',{"student":students})
+
+
+def delete_student(request,emp_id):
+    students = Students.objects.get(id=emp_id)
+    students.delete()
+    # print("hello world")
+    print(emp_id)
+    # return students
+    return render(request,'index.html',{}) 
+
+def update_student(request,stu_id):
+    students = Students.objects.get(id=stu_id)
+
+    print(stu_id)
+    # return students
+    return render(request,'update_student.html',{"students":students})  
+
+def do_update_student(request,stu_id):
+    if request.method =="POST":
+        s1=str(request.POST.get("name"))
+        s2=str(request.POST.get("email"))
+        s3=str(request.POST.get("password"))
+        s4=(request.POST.get("gender"))
+        s5=(request.POST.get("image"))
+        s6=str(request.POST.get("address"))
+        s7=str(request.POST.get("phone_no"))
+        s8=str(request.POST.get("status"))   
+
+        students = Students.objects.get(id=stu_id)
+        print(students.name)
+        students.name=s1,
+        students.email = s2,             
+        students.password = s3,
+        students.gender = s4, 
+        students.image = s5,
+        students.address = s6,
+        students.phone_no = s7,           
+        students.status = s8,
+        students.save()
+
+    return redirect("/signup/")  
 
 def getStudent(request):
     students = Students.objects.all()

@@ -36,9 +36,11 @@ urlpatterns = [
 
 
     path('create-user/', views.aboutUs,name="create_user"),
-    path('get-student/', views.studentDetails),
+    path('get-student/<int:id>', views.studentDetails),
     path('user-data/', views.user_data,name="user_data"),
-    path('edit-student/<student>',views.edit_student,name="edit-student"),
+    path('update-student/<int:stu_id>',views.update_student,name="update-student"),
+    path('do-update-student/<int:stu_id>',views.do_update_student,name="do_update-student"),
+    path('delete-student/<int:emp_id>',views.delete_student,name="delete-student"),
     path('create-student/', views.aboutUs),
     path('calculator/', views.calculator,name="calculator"),
     path('even-odd/', views.evenOdd),

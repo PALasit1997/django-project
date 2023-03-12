@@ -61,8 +61,8 @@
                               </td>                         
                             {% endif %}
                             <td>
-                             <a href="{% url 'edit-student' students.id %}"> <button type="submit" class="btn btn-primary btn-rounded btn-fw">Edit</button></a>
-                             <a href=""> <button type="button" class="btn btn-danger btn-rounded btn-fw">Delete</button></a>
+                             <a href="/update-student/{{students.id}}"  class="btn btn-primary btn-rounded btn-fw">Update Student</a>
+                             <a href="/delete-student/{{students.id}}"   class="btn btn-danger btn-rounded btn-fw">Delete</a>
                             </td>
                           </tr> 
                         
